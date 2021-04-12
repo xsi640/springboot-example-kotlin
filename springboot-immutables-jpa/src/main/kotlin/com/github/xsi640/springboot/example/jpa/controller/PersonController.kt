@@ -12,27 +12,27 @@ class PersonController(
     val personRepository: PersonRepository
 ) {
     @RequestMapping(value = ["{id}"], method = [RequestMethod.GET])
-    suspend fun findOne(@PathVariable("id") id: Int): Person {
+    fun findOne(@PathVariable("id") id: Int): Person {
         return personRepository.getOne(id)
     }
 
     @RequestMapping(method = [RequestMethod.GET])
-    suspend fun findAll(): List<Person> {
+    fun findAll(): List<Person> {
         return personRepository.findAll()
     }
 
     @RequestMapping(method = [RequestMethod.PUT])
-    suspend fun update(@RequestBody person: Person): Person {
+    fun update(@RequestBody person: Person): Person {
         return personRepository.saveAndFlush(person)
     }
 
     @RequestMapping(method = [RequestMethod.POST, RequestMethod.PUT])
-    suspend fun create(@RequestBody person: Person): Person {
+    fun create(@RequestBody person: Person): Person {
         return personRepository.saveAndFlush(person)
     }
 
     @RequestMapping(value = ["{id}"], method = [RequestMethod.DELETE])
-    suspend fun delete(@PathVariable("id") id: Int) {
+    fun delete(@PathVariable("id") id: Int) {
         personRepository.deleteById(id)
     }
 }

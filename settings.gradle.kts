@@ -15,3 +15,9 @@ fun defineSubProject(name: String, subdir: String = "") {
 
 defineSubProject("jdbc", "")
 defineSubProject("jpa", "")
+defineSubProject("immutables-jpa", "")
+defineSubProject("aop", "")
+defineSubProject("async", "")
+defineSubProject("commandline", "")
+defineSubProject("interceptor", "")
+defineSubProject("invocation-interface", "")
