@@ -1,0 +1,8 @@
+test:
+  name: zhangsan
+  gender: male
+  maps:
+    a.a: 1
+    b.b: 2
+    "[${aaaa}]": "hdfs://2.2.2.2:2222"
+  name2: ${test.name}-${test.gender}

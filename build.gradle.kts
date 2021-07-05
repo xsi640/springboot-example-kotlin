@@ -3,9 +3,11 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     id("org.springframework.boot") version "2.4.2"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
-    kotlin("jvm") version "1.4.21"
-    kotlin("plugin.spring") version "1.4.21"
-    kotlin("plugin.jpa") version "1.4.21"
+    kotlin("jvm") version "1.4.32"
+    kotlin("plugin.spring") version "1.4.32"
+    kotlin("plugin.jpa") version "1.4.32"
+    kotlin("plugin.noarg") version "1.4.32"
+    kotlin("kapt") version "1.4.32"
 }
 
 allprojects {
@@ -18,6 +20,8 @@ allprojects {
         plugin("kotlin-spring")
         plugin("kotlin-jpa")
         plugin("kotlin-allopen")
+        plugin("kotlin-noarg")
+        plugin("kotlin-kapt")
     }
 
     group = "com.github.xsi640"
@@ -33,6 +37,7 @@ allprojects {
             credentials {
                 username = user
                 password = pwd
+                isAllowInsecureProtocol = true
             }
             url = uri("http://172.16.11.231:8081/nexus/repository/maven2-group/")
         }
@@ -55,6 +60,9 @@ allprojects {
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
         implementation("org.jetbrains.kotlin:kotlin-allopen")
 
+        implementation("com.querydsl:querydsl-apt:4.4.0")
+        kapt("com.querydsl:querydsl-apt:4.4.0:jpa")
+
         testImplementation("org.springframework.boot:spring-boot-starter-test")
     }
 
@@ -67,9 +75,5 @@ allprojects {
             freeCompilerArgs = listOf("-Xjsr305=strict")
             jvmTarget = "1.8"
         }
-    }
-
-    tasks.withType<Test> {
-        useJUnitPlatform()
     }
 }

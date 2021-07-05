@@ -4,18 +4,19 @@ logging:
     com.example: DEBUG
 spring:
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:~/test
-    username: sa
-    password:
+    third:
+      driver-class-name: ru.yandex.clickhouse.ClickHouseDriver
+      jdbc-url: jdbc:clickhouse://10.10.2.25:8123/default
+      username: default
+      password: d123456
+      connection-timeout: 20000
+      maximum-pool-size: 5
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
     show-sql: true
     hibernate:
-      ddl-auto: update
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
-  h2:
-    console:
-      enabled: true

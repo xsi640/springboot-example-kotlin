@@ -4,9 +4,9 @@ import java.util.*
 import javax.persistence.*
 
 @Entity
-@Table(name = "test")
 data class Person(
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Int,
     @Column(nullable = false)
     var name: String,

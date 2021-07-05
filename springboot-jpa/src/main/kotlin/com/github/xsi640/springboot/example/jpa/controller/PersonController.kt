@@ -3,7 +3,10 @@ package com.github.xsi640.springboot.example.jpa.controller
 import com.github.xsi640.springboot.example.jpa.domain.Person
 import com.github.xsi640.springboot.example.jpa.repository.PersonRepository
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.*
+import java.util.*
+import kotlin.random.Random
 
 @RestController
 @RequestMapping("/person")
